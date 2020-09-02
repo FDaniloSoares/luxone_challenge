@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h1>Main</h1>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -11,5 +11,9 @@ export default {
 </script>
 
 <style>
-
+    .main {
+        grid-area: main;
+        height: 100%;
+        width: 100%;
+    }
 </style>
