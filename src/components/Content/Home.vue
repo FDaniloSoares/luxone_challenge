@@ -1,30 +1,23 @@
 <template>
-  
-      <div class="home-horizontal">
-     <div class="home-vertical">
-        <div class="home-title">
-            Github <span>Search</span>        
-        </div><br>
-        <div class="home-search">
-            <input type="text" placeholder="Login do github..."/>
-            <button @click="showOnlyMain" >
-                <i class="fa fa-search"></i>
-            </button>
-        </div>  
-    
-  </div>
-  </div>
-  
+    <div class="home-horizontal">
+        <div class="home-vertical">
+            <div class="home-title">
+                Github <span>Search</span>        
+            </div><br>
+            <Search/>
+        </div>
+    </div>
 </template>
 
 <script>
+import Search from './Search'
 export default {
     name: 'Home',
+    components: { Search },
     methods: {
-        showOnlyMain() {
-            this.$store.commit('showOnlyMain')
-            this.$router.push({ name: 'result' })
-        }
+        mounted() {
+            this.$store.commit('showOnlyMain', false)
+        }    
     }
 }
 </script>
@@ -70,41 +63,6 @@ line-height: 49px;
     .home-title span {
         font-family: 'Rubik', sans-serif;
         font-weight: normal;
-    }
-
-    .home-search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .home-search input {
-        box-sizing: border-box;
-        width: 30rem;
-        height: 2.2rem;
-        padding-left: 10px;
-        background: #FFFFFF;
-        border: 0.1rem solid #000000;
-
-        font-size: 20px;
-    }
-    .home-search button {
-        box-sizing: border-box;
-        background-color: #000000;
-        float: left;
-        width: 4rem;
-        height: 2.2rem;
-        border: solid #000000;
-        margin-left:-4rem;
-    }
-
-    .home-search button:hover {
-        background-color: rgb(53, 46, 46);
-    }
-
-    .home-search button i {
-        color: #ffffff;
-        font-size: 23px;
-    }
-    
+        font-style: italic;
+    }    
 </style>
