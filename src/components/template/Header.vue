@@ -12,7 +12,12 @@ import Search from '../Search'
 
 export default {
   name: 'Header',
-  components: { Search }
+  components: { Search },
+  methods: {
+    showMain() {
+      this.$store.commit('showOnlyMain', false)
+    }
+  }
 }
 </script>
 

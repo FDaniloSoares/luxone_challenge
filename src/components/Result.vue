@@ -1,6 +1,7 @@
 <template>
   <div class="result">
-    <div v-for="index in userRepository.length" :key="index">
+    <div class="title" v-if="user.public_repos===0" >Não Ha Repositorios Publicos</div>
+    <div else v-for="index in userRepository.length" :key="index">
       <span class="title">{{ userRepository[index -1 ].name }}</span>
       <span v-if="userRepository[index -1 ].description" class="description">{{ userRepository[index -1 ].description }}</span>
       <span class="stars">
@@ -16,9 +17,26 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Result',
-  computed: mapState(['userRepository','user']),
+  computed: mapState(['userRepository','user','isHeaderSidebarVisibel']),
+  methods: {
+    beforeRouteEnter(to, from, next) {
+    try {
+      if (this.isHeaderSidebarVisibel === true) {
+        return
+      } else {
+        this.$router.push('/')
+      }
+    } catch(error) {
+      next('/')
+    } 
+  }
+  },
   mounted: function() {
     this.$store.commit('showOnlyMain', true)
+    this.beforeRouteEnter()
+  },
+  created: function() {
+    this.beforeRouteEnter()
   }
 }
 </script>

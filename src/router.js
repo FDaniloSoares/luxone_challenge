@@ -6,17 +6,18 @@ import Result from './components/Result'
 
 Vue.use(VueRouter)
 
-const routes = [{
-  name: 'home',
-  path: '/',
-  component: Home
-}, {
-  name: 'result',
-  path: '/result',
-  component: Result
-}]
-
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
-  routes
+  
+  routes: [{
+    name: 'home',
+    path: '/',
+    component: Home
+  }, {
+    name: 'result',
+    path: '/result',
+    component: Result,
+  }]  
 })
+
+export default router;
