@@ -2,7 +2,7 @@
   <div class="result">
     <div v-for="index in userRepository.length" :key="index">
       <span class="title">{{ userRepository[index -1 ].name }}</span>
-      <span class="description">{{ userRepository[index -1 ].description }}</span>
+      <span v-if="userRepository[index -1 ].description" class="description">{{ userRepository[index -1 ].description }}</span>
       <span class="stars">
         <i class="far fa-star"></i>
         <span >{{ userRepository[index -1 ].stargazers_count }}</span>
@@ -48,9 +48,9 @@ export default {
   }
 
   .description {
-    width: 1028px;
-    height: 56px;
-    margin: 0px 10px 5px 0px;
+    max-width: 1028px;
+    min-height: 30px;
+    margin: 0px 10px 0px 0px;
     font-size: 22px;
     line-height: 28px;
     color: #757575;
@@ -60,14 +60,14 @@ export default {
     height: 20px;
     width: 20px;
     box-sizing: border-box;
-    margin: 0px 5px 25px 0px;
+    margin: 0px 5px 12px 0px;
     color: #000000;
   }
 
   .stars span {
     height: 20px;
     width: 20px;
-    margin: 0px 5px 25px 0px;
+    margin: 0px 5px 12px 0px;
     color: #757575;
   }
 </style>
