@@ -15,10 +15,8 @@ import Search from './Search'
 export default {
   name: 'Home',
   components: { Search },
-  methods: {
-    mounted() {
-      this.$store.commit('showOnlyMain', false)
-    }    
+  mounted: function() {
+    this.$store.commit('showOnlyMain', false)
   }
 }
 </script>

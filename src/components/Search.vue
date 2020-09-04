@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <input v-model="userLogin" type="text" placeholder="Login do github..."/>
+    <input v-on:keyup.enter="getInfos" v-model="userLogin" type="text" placeholder="Login do github..."/>
     <button @click="getInfos" >
       <i class="fa fa-search"></i>
     </button>
@@ -9,10 +9,13 @@
 
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 import { showError } from '../global'
+
 
 export default {
   name: 'Search',
+  computed: mapState(['isHeaderSidebarVisibel']),
   data: function(){
     return {
       userLogin: '',
@@ -23,8 +26,11 @@ export default {
   },
   methods: {
     showOnlyMain() {
-      this.$store.commit('showOnlyMain', true)
-      this.$router.push({ name: 'result' })
+      if(!this.isHeaderSidebarVisibel) {
+        this.$store.commit('showOnlyMain', true)
+        this.$router.push({ name: 'result' })
+      } else return
+    
     },
     getUser() {
       const url = `${this.baseUrl}/${this.userLogin}`

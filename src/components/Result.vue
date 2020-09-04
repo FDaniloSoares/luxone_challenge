@@ -17,6 +17,9 @@ import { mapState } from 'vuex'
 export default {
   name: 'Result',
   computed: mapState(['userRepository','user']),
+  mounted: function() {
+    this.$store.commit('showOnlyMain', true)
+  }
 }
 </script>
 
