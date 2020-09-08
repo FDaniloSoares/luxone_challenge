@@ -17,26 +17,20 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'Result',
-  computed: mapState(['userRepository','user','isHeaderSidebarVisibel']),
-  methods: {
-    beforeRouteEnter(to, from, next) {
-    try {
-      if (this.isHeaderSidebarVisibel === true) {
-        return
-      } else {
-        this.$router.push('/')
+  computed: mapState(['userRepository','user']),
+  beforeRouteEnter(to, from, next) {
+    next(vm => { 
+      const verifier = vm.$store.state.isHeaderSidebarVisibel
+      try {
+        if (verifier === true) {
+          next()
+        } else {
+          this.$router.push('/')
+        }
+      } catch(error) {
+        next('/')
       }
-    } catch(error) {
-      next('/')
-    } 
-  }
-  },
-  mounted: function() {
-    this.$store.commit('showOnlyMain', true)
-    this.beforeRouteEnter()
-  },
-  created: function() {
-    this.beforeRouteEnter()
+    })
   }
 }
 </script>

@@ -1,4 +1,7 @@
 # luxone_challenge
+    This little app shows informations about Github user's
+    It is possible see the lastest version in
+    https://vuesjs-heroku.herokuapp.com/
 
 ## Project setup
 ```
@@ -20,5 +23,3 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
